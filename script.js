@@ -6,8 +6,19 @@ const password2El = document.getElementById('password2');
 const messageContainer = document.querySelector('.message-container');
 const message = document.getElementById('message');
 
-function processFormData(e) {
-  e.preventDefault();
+let isValid = false;
+
+function validateForm() {
+  isValid = form.checkValidity();
+
+  message.textContent = 'Please fillout all fields';
+  message.style.color = 'red';
+  messageContainer.style.borderColor = 'red';
 }
 
-form.addEventListene('submit', processFormData);
+function processFormData(e) {
+  e.preventDefault();
+  validateForm();
+}
+
+form.addEventListener('submit', processFormData);
